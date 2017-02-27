@@ -307,7 +307,7 @@ module.exports = Backbone.View.extend({
       }
     }).bind(this));
 
-    return _.escape(content);
+    return content;
   },
 
   toggleEditor: function() {
@@ -925,7 +925,7 @@ module.exports = Backbone.View.extend({
     var $diff = this.$el.find('#diff');
 
     // Use _.escape() to prevent rendering HTML tags
-    var text1 = this.model.isNew() ? '' : _.escape(this.model.get('previous'));
+    var text1 = this.model.isNew() ? '' : this.model.get('previous');
     var text2 = _.escape(this.model.serialize());
 
     var d = diff.diffWords(text1, text2);
