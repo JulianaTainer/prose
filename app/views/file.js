@@ -698,8 +698,9 @@ module.exports = Backbone.View.extend({
       if (e) e.preventDefault();
 
       var previewContent = marked(this.compilePreview(this.model.get('content')));
+      localStorage.setItem('previewContent', previewContent);
 
-      this.$el.find('#preview').html("<form action='/123test/preview' method='POST' target='_blank'><input type='hidden' name='previewContent' value='" + _.escape(previewContent) + "'/><button type='submit'>Preview 123test style</button></form>" + previewContent);
+      this.$el.find('#preview').html("<a href='/123test/preview.html' target='_blank'>Preview 123test style</a>" + previewContent);
 
       this.mode = 'blob';
       this.contentMode('preview');
